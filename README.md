@@ -1,5 +1,7 @@
 # Kent Ridge Tree Trail
 
+[Open the live mockup](https://kent-ridge-tree-trail.vercel.app/) · [GitHub repository](https://github.com/leeyy0/kent-ridge-tree-trail)
+
 A working mockup of a more interactive **Activity 2: Tree Treasure Hunt**, based on **RVSS CA3 Guided Walk Proposal.pdf**, especially Activity 2, Appendix C2 and the five species in the group's existing Tree Cipher Quiz.
 
 ## Open
