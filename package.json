@@ -1,0 +1,11 @@
+{
+  "name": "kent-ridge-tree-trail",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An interactive Activity 2 concept for the Kent Ridge Park guided walk.",
+  "scripts": {
+    "start": "node server.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

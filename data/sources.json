@@ -1,0 +1,13 @@
+{
+  "retrieved": "2026-10-30",
+  "record_count": 4310,
+  "dataset_status": "Historical public snapshot; not a current survey",
+  "tree_source": "https://data.exploretrees.sg/trees.csv",
+  "species_source": "https://data.exploretrees.sg/species.json",
+  "source_repository": "https://github.com/cheeaun/sgtreesdata",
+  "copyright": "Trees.SG / National Parks Board",
+  "bbox_west_south_east_north": [103.781, 1.278, 103.7955, 1.291],
+  "photo_source_base": "https://rvss1003-tree-activity-delta.vercel.app/images/",
+  "photo_files": {"tiup.jpg":"Adinandra Dumosa.jpg", "simpoh.jpg":"Simpoh Air.jpg", "tembusu.jpg":"Tembusu.jpg", "derum.jpg":"Derum.jpg", "mempat.jpg":"Pink Mempat.jpg"},
+  "learning_stop_coordinates": "Illustrative, not verified individual tree locations"
+}

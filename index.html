@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#163b31">
+  <title>Canopy Connections · Kent Ridge Tree Trail</title>
+  <link rel="icon" href="assets/leaf.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="vendor/leaflet.js"></script>
+  <script defer src="data/trees.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Canopy Connections home"><span class="brandmark"><svg viewBox="0 0 32 32"><path d="M7 24C5 11 12 5 26 6c1 14-5 21-16 18M8 26 23 10M14 19v-7m0 7h8"/></svg></span><span>canopy<span class="brand-sub">CONNECTIONS</span></span></a>
+    <div class="mode-switch" role="group" aria-label="Activity mode"><button id="outdoor" aria-pressed="true"><span aria-hidden="true">☀</span> At the park</button><button id="indoor" aria-pressed="false"><span aria-hidden="true">☂</span> Wet-weather mode</button></div>
+    <div class="header-right"><span class="concept-label"><span></span> ACTIVITY 02 · CONCEPT</span><button id="guide-open" class="icon-button" aria-label="Open facilitator notes">?</button></div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="trail-sidebar">
+      <div class="eyebrow"><span class="small-line"></span> HEALING THE CITY’S GREEN CORRIDOR</div>
+      <h1>A forest <br>full of <em>clues.</em></h1>
+      <p class="intro" id="intro">Meet the trees that help Kent Ridge heal. Look closer, make a guess, and discover what keeps a forest connected.</p>
+      <div class="session-row"><span>◷ &nbsp;10-minute team challenge</span><button id="timer" title="Start or pause the optional timer" aria-label="Start 10-minute timer">Start <span>10:00</span></button></div>
+      <div class="progress-block"><div class="progress-label"><span>Your discoveries</span><strong id="progress-count">0 <span>/ 5</span></strong></div><div class="progress-track" role="progressbar" aria-label="Trees identified" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="progress-fill"></span></div><p id="goal-text">Identify at least 3 trees. Explain what helps each thrive.</p></div>
+      <div class="list-heading">YOUR TREE TRAIL <span>EXPLORE IN ANY ORDER</span></div>
+      <nav id="stop-list" aria-label="Tree challenges"></nav>
+      <div class="sidebar-footer"><div class="co-op"><span aria-hidden="true">✳</span><p><strong>One device. Many perspectives.</strong><br>Take turns as navigator, observer and clue solver.</p></div><button id="reflection-open" class="reflection-button">Connect the discoveries <span aria-hidden="true">↗</span></button><span class="course-label">RVSS1003 · KENT RIDGE PARK</span></div>
+    </aside>
+
+    <section class="map-workspace" aria-label="Interactive Kent Ridge tree map">
+      <div id="map" aria-label="Map of Kent Ridge Park"></div>
+      <div id="map-fallback" hidden><img src="assets/park-map.jpg" alt="Kent Ridge Park route map from the original guided walk proposal"><p>Offline reference map · select a clue from the trail list</p></div>
+      <div class="map-shade"></div>
+      <div class="map-heading"><div class="map-location"><span class="location-dot"></span> SINGAPORE · SOUTHERN RIDGES</div><h2>Kent Ridge Park</h2><p id="map-subtitle">Small clues. A bigger connection.</p></div>
+      <div class="weather-banner" id="weather-banner" hidden><span aria-hidden="true">☂</span><div><strong>The forest comes indoors.</strong><span> Explore photo clues and Street View together. Your discoveries stay with you.</span></div></div>
+      <div class="map-tools"><div class="layer-switch" role="group" aria-label="Tree map display"><button id="layer-type" aria-pressed="true">Trees</button><button id="layer-girth" aria-pressed="false">Girth</button></div><button id="recenter" aria-label="Recenter map on Kent Ridge Park" title="Recenter map">⌖</button></div>
+
+      <section class="clue-card" id="clue-card" aria-label="Selected tree challenge">
+        <div class="card-topline"><span id="card-number">FIELD NOTE 01 / 05</span><span class="card-status" id="card-status">UNSOLVED</span></div>
+        <button class="clue-photo" id="photo-open" aria-label="Enlarge the tree clue photograph"><img id="clue-image" src="assets/tiup.jpg" alt="Close-up of the first tree's leaves"><span class="photo-label">LOOK CLOSER</span><span class="photo-expand" aria-hidden="true">⛶</span></button>
+        <div class="card-body"><div class="eyebrow" id="clue-category">THE RESILIENT PIONEER</div><h3 id="clue-title">Who thrives where<br>others struggle?</h3><p class="riddle" id="riddle"></p><div class="observe-prompt" id="observe-prompt"></div>
+          <div class="answer-heading">WHICH TREE AM I?</div><div id="answers" class="answers"></div>
+          <button class="hint-button" id="hint-button" aria-expanded="false">+ &nbsp; A little help?</button><p class="hint" id="hint" hidden></p>
+          <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
+          <div class="card-links"><a id="street-link" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=1.2851%2C103.7891" target="_blank" rel="noopener">Explore Street View ↗</a><a id="species-link" href="https://www.nparks.gov.sg/florafaunaweb/flora/2/6/2698" target="_blank" rel="noopener" hidden>Species notes ↗</a></div>
+          <button id="next-stop" class="next-button" hidden>Next discovery <span>→</span></button>
+        </div>
+      </section>
+
+      <div class="map-bottom"><div class="legend"><span><i class="tree-dot"></i>Mapped trees</span><span><i class="challenge-dot"></i>Clue stops</span><span><i class="found-dot"></i>Identified</span></div><div class="data-note" id="data-note">Loading local tree records…</div><div class="credits">Inspired by <a href="https://exploretrees.sg/" target="_blank" rel="noopener">ExploreTrees.SG ↗</a> · Tree data © NParks via Trees.SG</div></div>
+      <div class="map-coordinate">1.284° N &nbsp; 103.789° E</div>
+    </section>
+  </main>
+
+  <dialog id="photo-dialog" class="photo-dialog"><button class="dialog-close" data-close="photo-dialog" aria-label="Close photo">×</button><img id="large-photo" src="assets/tiup.jpg" alt="Enlarged clue photograph"><p id="photo-caption">Observe the shape, texture and arrangement. What can you infer?</p></dialog>
+  <dialog id="guide-dialog" class="text-dialog"><button class="dialog-close" data-close="guide-dialog" aria-label="Close facilitator notes">×</button><div class="eyebrow">FACILITATOR NOTES</div><h2>Let curiosity lead.</h2><p>This is a proposed replacement for Activity 2: Tree Treasure Hunt in the CA3 guided walk proposal.</p><ol><li><strong>1 min · Set the scene.</strong> Introduce the ridge’s disturbed soils and the idea of forest recovery. Give participants rotating roles.</li><li><strong>6 min · Explore.</strong> Tap a numbered stop, study the clue, discuss an identification and explain the trait you used. Aim for 3 of 5 species.</li><li><strong>3 min · Make the connection.</strong> Compare pioneer resilience with assisted succession. Ask why a connected forest matters to wildlife.</li></ol><h3>When the weather changes</h3><p>Switch to Wet-weather mode at an indoor venue chosen by the facilitators. Use enlarged photographs and the Street View links. Imagery coverage varies; the photo clues keep the activity playable. Return to At the park without losing progress.</p><h3>About this concept</h3><p>The map uses a saved Kent Ridge subset of the historical public dataset used by ExploreTrees.SG. Large numbered markers are illustrative learning stops, not verified specimen locations or a walking route. Use the small tree dots to inspect the source records. Verify trees and access on a recce before field use. A tree record does not establish that an individual was planted.</p><p>Clue photos are reused from the group’s existing Tree Cipher Quiz, which attributes imagery to NParks Flora & Fauna Web. Species notes link to NParks. Tembusu’s current scientific name is <em>Cyrtophyllum fragrans</em>, also known as <em>Fagraea fragrans</em>.</p><div class="guide-actions"><button id="reset" class="secondary-button">Reset discoveries & timer</button><button id="print" class="secondary-button">Print activity notes</button></div></dialog>
+  <dialog id="reflection-dialog" class="text-dialog"><button class="dialog-close" data-close="reflection-dialog" aria-label="Close reflection">×</button><div class="eyebrow">FROM TREE TO FOREST</div><h2>How do we heal<br>a green corridor?</h2><p id="reflection-progress"></p><div class="reflection-prompt"><span>01</span><p>Choose one tree you identified. Which feature helped you recognise it, and how might its traits help it survive?</p></div><div class="reflection-prompt"><span>02</span><p>If pioneer trees can grow on poor soil, why might people still plant other native trees? Discuss assisted succession.</p></div><div class="reflection-prompt"><span>03</span><p>What could happen to birds and seed dispersal if the green spaces around Kent Ridge became disconnected?</p></div><label class="note-label" for="team-note">YOUR TEAM’S TAKEAWAY</label><textarea id="team-note" rows="3" placeholder="A connected forest matters because…"></textarea><span id="note-state" class="note-state">Saved on this device as you type.</span><button id="reflection-close" class="next-button">Back to the forest <span>↗</span></button></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
